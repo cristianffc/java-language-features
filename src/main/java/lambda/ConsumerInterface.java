@@ -9,9 +9,11 @@ import java.util.function.LongConsumer;
 public class ConsumerInterface {
 
     public static void main(String[] args) {
+        //Script 1
         Consumer<Integer> printConsole = (Integer number) -> System.out.println(number);
         printValues(Arrays.asList(1,2,3,4,5,6), printConsole);
 
+        //Script 2
         LongConsumer printLongValue = (long number) -> System.out.println(number);
         printLongValue.accept(100l);
     }

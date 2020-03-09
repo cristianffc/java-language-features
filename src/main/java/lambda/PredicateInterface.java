@@ -10,6 +10,7 @@ public class PredicateInterface {
 
     public static void main(String[] args) {
 
+        //Script 1
         Predicate<String> nonEmptyStringPredicate = (String word) -> !word.isEmpty();
         Predicate<Integer> evenNumberPredicate = (Integer number) -> {
             if (number % 2 == 0) {
@@ -19,12 +20,15 @@ public class PredicateInterface {
             }
         };
 
+        //Script 2
         List<String> nonEmpty = filter(Arrays.asList("one", "two", "", "four", ""), nonEmptyStringPredicate);
         System.out.println("nonEmptyStringPredicate" + nonEmpty);
 
+        //Script 3
         List<Integer> evenNumber = filter(Arrays.asList(1, 2, 3, 4, 5), evenNumberPredicate);
         System.out.println(evenNumber);
 
+        //Script 4
         IntPredicate oddNumber = (int i) -> i % 2 != 0;
         System.out.print(oddNumber.test(101));
         System.out.print(oddNumber.test(100));
