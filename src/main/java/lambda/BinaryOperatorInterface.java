@@ -1,7 +1,6 @@
 package lambda;
 
 import java.util.function.BinaryOperator;
-import java.util.function.UnaryOperator;
 
 public class BinaryOperatorInterface {
 

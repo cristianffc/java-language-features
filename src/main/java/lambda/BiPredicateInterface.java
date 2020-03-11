@@ -1,11 +1,16 @@
 package lambda;
 
-import java.util.function.BinaryOperator;
+import java.util.function.BiPredicate;
 
 public class BiPredicateInterface {
     public static void main(String[] args) {
         //Script 1
-        BinaryOperator<Integer> multiplyValues = (Integer source, Integer target) -> {return source * target;};
-        System.out.println(multiplyValues.apply(3,5));
+        BiPredicate<Integer, String> checkValueText = (Integer value, String text) -> {
+                    if(value.equals(3) && text.equals("hello"))
+                        return true;
+                    else
+                        return false;};
+        System.out.println(checkValueText.test(3,"hello"));
+        System.out.println(checkValueText.test(3,"hi"));
     }
 }
