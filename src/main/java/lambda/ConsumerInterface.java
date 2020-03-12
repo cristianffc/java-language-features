@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.LongConsumer;
 
+/*
+    Target type: Consumer<T>
+    Function descriptor: T -> void
+*/
+
 public class ConsumerInterface {
 
     public static void main(String[] args) {

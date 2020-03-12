@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
+/*
+    Target type: Predicate<T>
+    Function descriptor: T -> boolean
+*/
+
 public class PredicateInterface {
 
     public static void main(String[] args) {

@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.LongFunction;
 
+/*
+    Target type: Function<T, R>
+    Function descriptor: T -> R
+*/
+
 public class FunctionInterface {
 
     public static void main(String[] args) {

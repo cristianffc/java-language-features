@@ -2,6 +2,11 @@ package lambda;
 
 import java.util.function.BiPredicate;
 
+/*
+    Target type: BiPredicate<T, U>
+    Function descriptor: (T, U) -> boolean
+*/
+
 public class BiPredicateInterface {
     public static void main(String[] args) {
         //Script 1

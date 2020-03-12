@@ -2,6 +2,11 @@ package lambda;
 
 import java.util.function.Supplier;
 
+/*
+    Target type: Supplier<T>
+    Function descriptor: () -> T
+*/
+
 public class SupplierInterface {
 
     public static void main(String[] args) {
