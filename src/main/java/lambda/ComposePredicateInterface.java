@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 public class ComposePredicateInterface {
 
     public static void main(String[] args) {
-        Car car1 = new Car("Mercedes", Color.BLUE, 180);
+        Car car1 = new Car("Mercedes", Color.BLUE, 180, true);
 
         Predicate<Car> isAudiCar = car -> car.getName().equals("Audi");
 

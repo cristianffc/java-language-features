@@ -5,11 +5,44 @@ public class Car {
     private String name;
     private Color color;
     private Integer maxSpeed;
+    private Boolean automaticGearbox;
 
-    public Car(String name, Color color, Integer maxSpeed) {
+    public Car(String name, Color color, Integer maxSpeed, Boolean automaticGearbox) {
         this.name = name;
         this.color = color;
         this.maxSpeed = maxSpeed;
+        this.automaticGearbox = automaticGearbox;
+    }
+
+    public static class Builder {
+        private String name;
+        private Color color;
+        private Integer maxSpeed;
+        private Boolean automaticGearbox;
+
+        public Builder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder withColor(Color color) {
+            this.color = color;
+            return this;
+        }
+
+        public Builder withSpeed(Integer maxSpeed) {
+            this.maxSpeed = maxSpeed;
+            return this;
+        }
+
+        public Builder withaAutomaticGearbox(Boolean automaticGearbox) {
+            this.automaticGearbox = automaticGearbox;
+            return this;
+        }
+
+        public Car build() {
+            return new Car(name, color, maxSpeed, automaticGearbox);
+        }
     }
 
     public String getName() {
@@ -34,6 +67,14 @@ public class Car {
 
     public void setMaxSpeed(Integer maxSpeed) {
         this.maxSpeed = maxSpeed;
+    }
+
+    public Boolean getAutomaticGearbox() {
+        return automaticGearbox;
+    }
+
+    public void setAutomaticGearbox(Boolean automaticGearbox) {
+        this.automaticGearbox = automaticGearbox;
     }
 
     @Override
@@ -71,6 +112,7 @@ public class Car {
                 "name='" + name + '\'' +
                 ", color=" + color +
                 ", maxSpeed=" + maxSpeed +
+                ", automaticGearbox=" + automaticGearbox +
                 '}';
     }
 }

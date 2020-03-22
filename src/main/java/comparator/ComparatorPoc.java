@@ -11,10 +11,10 @@ import static java.util.Comparator.comparing;
 public class ComparatorPoc {
 
     public static void main(String []args) {
-        Car car1 = new Car("Ferrari", Color.BLUE, 180);
-        Car car2 = new Car("Mercedes", Color.RED, 200);
-        Car car3 = new Car("BMW", Color.BLACK, 220);
-        Car car4 = new Car("Audi", Color.RED, 200);
+        Car car1 = new Car("Ferrari", Color.BLUE, 180, true);
+        Car car2 = new Car("Mercedes", Color.RED, 200, false);
+        Car car3 = new Car("BMW", Color.BLACK, 220, true);
+        Car car4 = new Car("Audi", Color.RED, 200, false);
 
         List<Car> mockCars = Arrays.asList(car1, car2, car3);
         List<Car> cars = Arrays.asList(car1, car2, car3, car4);
