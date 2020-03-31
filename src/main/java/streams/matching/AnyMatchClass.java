@@ -1,16 +1,13 @@
-package streams;
+package streams.matching;
 
 import entity.Car;
 import entity.Color;
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Mapping {
+public class AnyMatchClass {
 
     public static void main(String[] args) {
-
         Car car1 = new Car.Builder().
                 withName("mock Car First").
                 withColor(Color.BLUE).
@@ -32,26 +29,10 @@ public class Mapping {
                 withaAutomaticGearbox(true).
                 build();
 
-        Car car4 = new Car.Builder().
-                withName("mock Car Fourth").
-                withColor(Color.RED).
-                withSpeed(120).
-                withaAutomaticGearbox(true).
-                build();
+        List<Car> cars = Arrays.asList(car1, car2, car3);
 
-        List<Car> cars = Arrays.asList(car1,car2,car3, car4);
-        List<Integer> carNames = cars.stream().
-                map((Car car) -> car.getName().length()).
-                collect(Collectors.toList());
-
-        carNames.forEach(System.out::println);
-
-        List<Integer> carNamesLength = cars.stream().
-                map((Car car) -> car.getName()).
-                map(String::length).
-                collect(Collectors.toList());
-
-        carNamesLength.forEach(System.out::println);
-
+        if(cars.stream().anyMatch(car -> car.getColor().equals(Color.BLUE))) { //short-circuit operation
+            System.out.println("Blue car exists!");
+        }
     }
 }

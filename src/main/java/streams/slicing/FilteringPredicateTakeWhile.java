@@ -1,13 +1,12 @@
-package streams;
+package streams.slicing;
 
 import entity.Car;
 import entity.Color;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FilteringPredicate {
+public class FilteringPredicateTakeWhile {
 
     public static void main(String[] args) {
 
@@ -35,16 +34,16 @@ public class FilteringPredicate {
         Car car4 = new Car.Builder().
                 withName("mockCar4").
                 withColor(Color.RED).
-                withSpeed(120).
+                withSpeed(150).
                 withaAutomaticGearbox(false).
                 build();
 
         List<Car> cars = Arrays.asList(car1,car2,car3, car4);
-        List<Car> carsWithAutomaticGearbox = cars.stream().
-                filter(Car::getAutomaticGearbox).
+        List<Car> carsFiltered = cars.stream().
+                takeWhile(car -> car.getMaxSpeed() < 125).
                 collect(Collectors.toList());
 
-        carsWithAutomaticGearbox.forEach(System.out::print);
+        carsFiltered.forEach(System.out::print);
 
     }
 }

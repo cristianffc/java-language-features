@@ -1,13 +1,12 @@
-package streams;
+package streams.filtering;
 
 import entity.Car;
 import entity.Color;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FilteringPredicateTakeWhile {
+public class FiltereingUniqueElements {
 
     public static void main(String[] args) {
 
@@ -22,29 +21,30 @@ public class FilteringPredicateTakeWhile {
                 withName("mockCar2").
                 withColor(Color.RED).
                 withSpeed(120).
-                withaAutomaticGearbox(false).
+                withaAutomaticGearbox(true).
                 build();
 
         Car car3 = new Car.Builder().
-                withName("mockCar3").
-                withColor(Color.BLACK).
-                withSpeed(130).
+                withName("mockCar2").
+                withColor(Color.RED).
+                withSpeed(120).
                 withaAutomaticGearbox(true).
                 build();
 
         Car car4 = new Car.Builder().
-                withName("mockCar4").
+                withName("mockCar2").
                 withColor(Color.RED).
-                withSpeed(150).
-                withaAutomaticGearbox(false).
+                withSpeed(120).
+                withaAutomaticGearbox(true).
                 build();
 
         List<Car> cars = Arrays.asList(car1,car2,car3, car4);
-        List<Car> carsFiltered = cars.stream().
-                takeWhile(car -> car.getMaxSpeed() < 125).
+        List<Car> carsWithAutomaticGearbox = cars.stream().
+                filter(Car::getAutomaticGearbox).
+                distinct().
                 collect(Collectors.toList());
 
-        carsFiltered.forEach(System.out::print);
+        carsWithAutomaticGearbox.forEach(System.out::print);
 
     }
 }

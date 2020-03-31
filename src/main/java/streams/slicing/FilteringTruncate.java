@@ -1,13 +1,12 @@
-package streams;
+package streams.slicing;
 
 import entity.Car;
 import entity.Color;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FilteringPredicateDropWhile {
+public class FilteringTruncate {
 
     public static void main(String[] args) {
 
@@ -35,13 +34,14 @@ public class FilteringPredicateDropWhile {
         Car car4 = new Car.Builder().
                 withName("mockCar4").
                 withColor(Color.RED).
-                withSpeed(150).
-                withaAutomaticGearbox(false).
+                withSpeed(120).
+                withaAutomaticGearbox(true).
                 build();
 
         List<Car> cars = Arrays.asList(car1,car2,car3, car4);
         List<Car> carsWithAutomaticGearbox = cars.stream().
-                dropWhile(car -> car.getMaxSpeed() < 125).
+                filter(Car::getAutomaticGearbox).
+                limit(2).
                 collect(Collectors.toList());
 
         carsWithAutomaticGearbox.forEach(System.out::print);
