@@ -5,8 +5,10 @@ import entity.Color;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
-public class SumMaxSpeed {
+public class NumericRange {
 
     public static void main(String[] args) {
         Car car1 = new Car.Builder().
@@ -38,7 +40,9 @@ public class SumMaxSpeed {
                 build();
 
         List<Car> cars = Arrays.asList(car1,car2,car3, car4);
-        int totalMaxSpeed = cars.stream().mapToInt(Car::getMaxSpeed).sum();
-        System.out.println(totalMaxSpeed);
+        IntStream evenNumbers = IntStream.rangeClosed(1, 200).filter(n -> n % 2 == 0);
+
+        System.out.println(evenNumbers.count());
+
     }
 }

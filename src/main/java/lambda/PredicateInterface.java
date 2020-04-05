@@ -6,18 +6,17 @@ import java.util.List;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
-/*
+/**
     Target type: Predicate<T>
     Function descriptor: T -> boolean
-*/
+**/
 
 public class PredicateInterface {
-
     public static void main(String[] args) {
 
-        //Script 1
-        Predicate<String> nonEmptyStringPredicate = (String word) -> !word.isEmpty();
-        Predicate<Integer> evenNumberPredicate = (Integer number) -> {
+        //Example 1
+        Predicate<String> nonEmptyString = (String word) -> !word.isEmpty();
+        Predicate<Integer> evenNumber = (Integer number) -> {
             if (number % 2 == 0) {
                 return true;
             } else {
@@ -25,19 +24,18 @@ public class PredicateInterface {
             }
         };
 
-        //Script 2
-        List<String> nonEmpty = filter(Arrays.asList("one", "two", "", "four", ""), nonEmptyStringPredicate);
-        System.out.println("nonEmptyStringPredicate" + nonEmpty);
+        //Example 2
+        List<String> nonEmptyList = filter(Arrays.asList("one", "two", "", "four", ""), nonEmptyString);
+        System.out.println("nonEmptyStringPredicate" + nonEmptyList);
+                                                                                               
+        //Example 3
+        List<Integer> evenNumberList = filter(Arrays.asList(1, 2, 3, 4, 5), evenNumber);
+        System.out.println(evenNumberList);
 
-        //Script 3
-        List<Integer> evenNumber = filter(Arrays.asList(1, 2, 3, 4, 5), evenNumberPredicate);
-        System.out.println(evenNumber);
-
-        //Script 4
+        //Example 4 - Using primitive specialization
         IntPredicate oddNumber = (int i) -> i % 2 != 0;
         System.out.print(oddNumber.test(101));
         System.out.print(oddNumber.test(100));
-
     }
 
     public static <T> List<T> filter(List<T> list, Predicate<T> p) {
@@ -49,5 +47,4 @@ public class PredicateInterface {
         }
         return results;
     }
-
 }
