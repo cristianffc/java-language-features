@@ -26,16 +26,16 @@ public class PredicateInterface {
 
         //Example 2
         List<String> nonEmptyList = filter(Arrays.asList("one", "two", "", "four", ""), nonEmptyString);
-        System.out.println("nonEmptyStringPredicate" + nonEmptyList);
+        System.out.println("Print nonEmpty list: " + nonEmptyList);
                                                                                                
         //Example 3
         List<Integer> evenNumberList = filter(Arrays.asList(1, 2, 3, 4, 5), evenNumber);
-        System.out.println(evenNumberList);
+        System.out.println("Even numbers: " + evenNumberList);
 
         //Example 4 - Using primitive specialization
         IntPredicate oddNumber = (int i) -> i % 2 != 0;
-        System.out.print(oddNumber.test(101));
-        System.out.print(oddNumber.test(100));
+        System.out.println("101 odd number? " + oddNumber.test(101));
+        System.out.println("100 odd number? " + oddNumber.test(100));
     }
 
     public static <T> List<T> filter(List<T> list, Predicate<T> p) {

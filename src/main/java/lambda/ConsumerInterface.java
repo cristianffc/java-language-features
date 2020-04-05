@@ -6,19 +6,18 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.LongConsumer;
 
-/*
+/**
     Target type: Consumer<T>
     Function descriptor: T -> void
-*/
+**/
 
 public class ConsumerInterface {
-
     public static void main(String[] args) {
-        //Script 1
-        Consumer<Integer> printConsole = (Integer number) -> System.out.println(number);
-        printValues(Arrays.asList(1,2,3,4,5,6), printConsole);
+        //Example 1
+        Consumer<Integer> printNumbers = (Integer number) -> System.out.println(number);
+        printValues(Arrays.asList(1,2,3,4,5,6), printNumbers);
 
-        //Script 2
+        //Example 2
         LongConsumer printLongValue = (long number) -> System.out.println(number);
         printLongValue.accept(100l);
     }
