@@ -5,7 +5,6 @@ import entity.Color;
 import java.util.function.Predicate;
 
 public class ComposePredicateInterface {
-
     public static void main(String[] args) {
         Car car1 = new Car("Mercedes", Color.BLUE, 180, true);
 
@@ -19,5 +18,4 @@ public class ComposePredicateInterface {
         System.out.println("Is not audi car? " + car1.getName() + " " + isNotAudiCar.test(car1));
         System.out.println("Is not audi car and is blue? " + car1.getName() + " " + isNotAudiCarAndIsBlue.test(car1));
     }
-
 }
