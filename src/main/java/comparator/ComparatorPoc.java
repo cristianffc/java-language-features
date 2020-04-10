@@ -2,7 +2,6 @@ package comparator;
 
 import entity.Car;
 import entity.Color;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -19,7 +18,8 @@ public class ComparatorPoc {
         List<Car> mockCars = Arrays.asList(car1, car2, car3);
         List<Car> cars = Arrays.asList(car1, car2, car3, car4);
 
-        //Pass code creating comparator class
+        //Different ways to create comparator
+        //Pass code to create comparator class
         mockCars.sort(new CarComparator());
 
         //Anonymous class
@@ -30,31 +30,32 @@ public class ComparatorPoc {
             }
         });
 
-        //Lambda expression
-        //Script 1
+        //Lambda expressions
+        //Example 1 - Lambda expression
         mockCars.sort((Car c1, Car c2) -> c1.getMaxSpeed().compareTo(c2.getMaxSpeed()));
 
-        //Script2
+        //Example 2 - Type inference
         mockCars.sort((c1, c2) -> c1.getMaxSpeed().compareTo(c2.getMaxSpeed()));
 
-        //Script 3
+        //Example 3 - Static method helper
         Comparator<Car> carComparator = Comparator.comparing((Car car) -> car.getMaxSpeed());
 
-        //Script 4
+        //Example 4 - Static method helper with type inference
         mockCars.sort(comparing(car -> car.getMaxSpeed()));
 
-        //Script 5
-        //Sort cars by comparing car's max speed
+        //Example 5  - Method reference
+        //Sort cars by car max speed
         cars.sort(comparing(Car::getMaxSpeed));
         System.out.println("ASC max speed order" + cars);
 
-        //Script 6
+        //Example 6 -
+        //Sort cars by max speed with inverse order
         cars.sort(comparing(Car::getMaxSpeed).reversed());
         System.out.println("DESC max speed order" + cars);
 
-        //Script 7
+        //Example 7
+        //Sort cars by max speed with inverse order and by car name
         cars.sort(comparing(Car::getMaxSpeed).reversed().thenComparing(Car::getName));
         System.out.println("DESC max speed and name order" + cars);
-
     }
 }

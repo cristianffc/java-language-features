@@ -30,21 +30,18 @@ public class MethodReference {
     public static void main(String[] args) {
 
         //Static method
-        ToLongFunction<String> stringToLong =
-                (String s) -> Integer.parseInt(s);
+        ToLongFunction<String> stringToLong = (String s) -> Integer.parseInt(s);
         ToLongFunction<String> stringToLongMethodReference = Integer::parseInt;
         System.out.println(stringToLongMethodReference.applyAsLong("100"));
 
         //Arbitrary type
-        BiPredicate<List<String>, String> contains =
-                (list, element) -> list.contains(element);
+        BiPredicate<List<String>, String> contains = (list, element) -> list.contains(element);
         BiPredicate<List<String>, String> containsMethodReference = List::contains;
         System.out.println(containsMethodReference.test(Arrays.asList("hello","world"), "hello"));
 
         //Instance method of an existing object or expression
         MethodReference methodReference = new MethodReference();
-        Function<Integer, String> statement =
-            (value) -> methodReference.printText(value);
+        Function<Integer, String> statement = (value) -> methodReference.printText(value);
         Function<Integer, String> statementMethodReference = methodReference::printText;
         System.out.println(statementMethodReference.apply(10));
 
@@ -55,14 +52,10 @@ public class MethodReference {
         Function<Integer, MethodReference> intSupplier = MethodReference::new;
         MethodReference methodRefWithInt = intSupplier.apply(10);
 
-        Function<Integer, MethodReference> IntSupplierArgs = (value) -> new MethodReference(value);
-        MethodReference methodRefWithIntArgs = intSupplier.apply(10);
-
         BiFunction<Integer, String, MethodReference> supplierArgs = MethodReference::new;
         MethodReference methodRefArgs = supplierArgs.apply(10, "hello");
 
         TriFunction<Integer, String, Long, MethodReference> triFunction = MethodReference::new;
-
     }
 
     String printText(Integer value) {
