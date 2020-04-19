@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FilteringPredicate {
-
     public static void main(String[] args) {
 
         Car car1 = new Car.Builder().
@@ -44,6 +43,5 @@ public class FilteringPredicate {
                 collect(Collectors.toList());
 
         carsWithAutomaticGearbox.forEach(System.out::print);
-
     }
 }
