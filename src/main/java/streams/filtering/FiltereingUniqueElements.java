@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FilteringUniqueElements {
+public class FiltereingUniqueElements {
     public static void main(String[] args) {
 
         Car car1 = new Car.Builder().
