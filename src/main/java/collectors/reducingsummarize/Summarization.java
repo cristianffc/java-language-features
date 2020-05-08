@@ -21,16 +21,13 @@ public class Summarization {
                 build();
 
         List<Car> cars = Arrays.asList(car1, car2, car3);
-        int sumSpeedCar = cars.stream().collect(
-                Collectors.summingInt(Car::getMaxSpeed));
+        int sumSpeedCar = cars.stream().collect(Collectors.summingInt(Car::getMaxSpeed));
         System.out.println(sumSpeedCar);
 
-        double avgSpeedCar = cars.stream().collect(
-                Collectors.averagingInt(Car::getMaxSpeed));
+        double avgSpeedCar = cars.stream().collect(Collectors.averagingInt(Car::getMaxSpeed));
         System.out.println(avgSpeedCar);
 
-        IntSummaryStatistics menuStatistics = cars.stream().collect(
-                Collectors.summarizingInt(Car::getMaxSpeed));
+        IntSummaryStatistics menuStatistics = cars.stream().collect(Collectors.summarizingInt(Car::getMaxSpeed));
         System.out.println(menuStatistics);
     }
 }
