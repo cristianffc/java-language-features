@@ -1,5 +1,8 @@
 package domain.entity;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class Food {
 
     private String name;
@@ -95,12 +98,6 @@ public class Food {
 
     @Override
     public String toString() {
-        return "Food{" +
-                "name='" + name + '\'' +
-                ", calories=" + calories +
-                ", type=" + type +
-                ", color=" + color +
-                ", vegetarian=" + vegetarian +
-                '}';
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 }

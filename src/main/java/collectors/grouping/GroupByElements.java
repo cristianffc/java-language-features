@@ -15,7 +15,7 @@ public class GroupByElements {
         List<Food> foods = GenerateFood.getFoodsList();
 
         Map<Color, List<Food>> listFoodByColor = foods.stream().collect(groupingBy(Food::getColor));
-        System.out.println(listFoodByColor);
+        System.out.println("listFoodByColor ->" + listFoodByColor);
 
         Map<CALORIC_TYPE, List<Food>> listFoodByCaloricType = foods.stream()
                                                              .collect(groupingBy(food -> {
@@ -26,7 +26,7 @@ public class GroupByElements {
                                                                      }
                                                                  }
                                                              ));
-        System.out.println(listFoodByCaloricType);
+        System.out.println("listFoodByCaloricType ->" + listFoodByCaloricType);
 
         Map<CALORIC_TYPE, List<Food>> listVegetarianFoodByCaloricType = foods.stream()
                                                            .filter(food -> food.isVegetarian()).collect(groupingBy(
@@ -38,11 +38,11 @@ public class GroupByElements {
                                                                        }
                                                                    }
                                                            ));
-        System.out.println(listVegetarianFoodByCaloricType);
+        System.out.println("listVegetarianFoodByCaloricType ->" + listVegetarianFoodByCaloricType);
 
         Map<Color, List<Food>> listFoodByColorAndCalories = foods.stream().filter(food -> food.getCalories() > 140)
                                                                     .collect(groupingBy(Food::getColor));
-        System.out.println(listFoodByColorAndCalories);
+        System.out.println("listFoodByColorAndCalories ->" +listFoodByColorAndCalories);
 
         Map<Color, List<Food>> listFoodByColorAndCalories2 = foods.stream()
                                                                  .collect(groupingBy(
@@ -50,6 +50,6 @@ public class GroupByElements {
                                                                         food -> food.getCalories() > 140, toList())
                                                                      )
                                                                  );
-        System.out.println(listFoodByColorAndCalories2);
+        System.out.println("listFoodByColorAndCalories2 ->" + listFoodByColorAndCalories2);
     }
 }
