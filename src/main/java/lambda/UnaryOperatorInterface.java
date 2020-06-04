@@ -1,5 +1,8 @@
 package lambda;
 
+import domain.entity.Food;
+import domain.usecase.GenerateFood;
+import java.util.List;
 import java.util.function.UnaryOperator;
 
 /**
@@ -9,8 +12,12 @@ import java.util.function.UnaryOperator;
 
 public class UnaryOperatorInterface {
     public static void main(String[] args) {
-        //Example 1
-        UnaryOperator<Integer> doubleTheValue = (input) -> {return 2 * input;};
-        System.out.println(doubleTheValue.apply(3));
+        List<Food> foods = GenerateFood.getFoodsList();
+
+        UnaryOperator<Integer> caloriesFor10UnitsOperator = (weight) -> {return weight * 10;};
+
+        System.out.println(caloriesFor10UnitsOperator.apply(foods.get(0).getCalories()));
+        System.out.println(caloriesFor10UnitsOperator.apply(foods.get(1).getCalories()));
+        System.out.println(caloriesFor10UnitsOperator.apply(foods.get(2).getCalories()));
     }
 }

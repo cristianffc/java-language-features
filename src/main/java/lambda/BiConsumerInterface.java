@@ -1,16 +1,23 @@
 package lambda;
 
-import java.util.function.BiConsumer;
+import domain.entity.Food;
+import domain.entity.Type;
+import domain.usecase.GenerateFood;
+import java.util.HashMap;
 
 /**
-    Target type: BiConsumer<T, U>
-    Function descriptor: (T, U) -> ()
-**/
+ * Target type: BiConsumer<T, U>
+ * Function descriptor: (T, U) -> ()
+ */
 
 public class BiConsumerInterface {
     public static void main(String[] args) {
-        //Example 1
-        BiConsumer<Integer, String> printValueText = (value, target) -> {System.out.print(value + target);};
-        printValueText.accept(3,"hello");
+        HashMap<Type, Food> foods = GenerateFood.getFoodsByTypeMap();
+
+        foods.forEach((type, food) -> {
+            if (type.equals(Type.FRUIT)) {
+                System.out.println("Fruit Type - Food: " + food.getName());
+            }
+        });
     }
 }

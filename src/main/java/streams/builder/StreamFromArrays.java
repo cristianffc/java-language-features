@@ -2,7 +2,9 @@ package streams.builder;
 
 import java.util.Arrays;
 
-/** Arrays.stream takes an array as parameter **/
+/**
+ * Arrays.stream takes an array as parameter
+ */
 
 public class StreamFromArrays {
     public static void main(String[] args) {

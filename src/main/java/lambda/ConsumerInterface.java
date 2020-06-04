@@ -1,10 +1,10 @@
 package lambda;
 
+import domain.entity.Food;
+import domain.usecase.GenerateFood;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.LongConsumer;
 
 /**
     Target type: Consumer<T>
@@ -13,16 +13,16 @@ import java.util.function.LongConsumer;
 
 public class ConsumerInterface {
     public static void main(String[] args) {
-        //Example 1
-        Consumer<Integer> printNumbers = (Integer number) -> System.out.println(number);
-        printValues(Arrays.asList(1,2,3,4,5,6), printNumbers);
+        List<Food> foods = GenerateFood.getFoodsList();
 
-        //Example 2
-        LongConsumer printLongValue = (long number) -> System.out.println(number);
-        printLongValue.accept(100l);
+        Consumer<Food> foodConsumer = food -> {
+            System.out.println(food.getName());
+        };
+
+        print(foods, foodConsumer);
     }
 
-    public static <T> void printValues(List<T> list, Consumer<T> consumer) {
+    public static <T> void print(List<T> list, Consumer<T> consumer) {
         List<T> results = new ArrayList();
         for (T t : list) {
             consumer.accept(t);

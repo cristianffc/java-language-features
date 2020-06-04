@@ -1,10 +1,13 @@
 package lambda;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import domain.entity.Food;
+import domain.entity.Type;
+import domain.usecase.GenerateFood;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
-import java.util.function.LongFunction;
 
 /**
     Target type: Function<T, R>
@@ -13,17 +16,17 @@ import java.util.function.LongFunction;
 
 public class FunctionInterface {
     public static void main(String[] args) {
-        //Example 1
-        List<Integer> result = printSize(Arrays.asList("test","lambda","java"), (String text) -> text.length());
-        System.out.println("Resulte size of \"test\", \"lambda\" and \"java\" strings: " + result);
+        List<Food> foods = GenerateFood.getFoodsList();
 
-        //Example 2
-        LongFunction<String> numberToString = (long number) -> String.valueOf(number);
-        System.out.println("Convert long to string: " + numberToString.apply(100L));
+        Function<Food, Type> typeFunction = food -> food.getType();
+
+        Set<Type> foodTypeList = getFoodType(foods, typeFunction);
+
+        System.out.println(foodTypeList);
     }
 
-    public static <T, R>  List<R> printSize (List<T> list, Function<T, R> function) {
-        List<R> resultList = new ArrayList<>();
+    public static <T, R> Set<R> getFoodType(List<T> list, Function<T, R> function) {
+        Set<R> resultList = new HashSet<>();
         for(T t: list) {
             resultList.add(function.apply(t));
         }

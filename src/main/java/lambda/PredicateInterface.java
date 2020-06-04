@@ -1,9 +1,9 @@
 package lambda;
 
+import domain.entity.Food;
+import domain.usecase.GenerateFood;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
 /**
@@ -13,32 +13,21 @@ import java.util.function.Predicate;
 
 public class PredicateInterface {
     public static void main(String[] args) {
+        List<Food> foods = GenerateFood.getFoodsList();
 
-        //Example 1
-        Predicate<String> nonEmptyString = (String word) -> !word.isEmpty();
-        Predicate<Integer> evenNumber = (Integer number) -> {
-            if (number % 2 == 0) {
+        Predicate<Food> isVegetarian = food -> {
+            if(food.isVegetarian()) {
                 return true;
             } else {
                 return false;
             }
         };
 
-        //Example 2
-        List<String> nonEmptyList = filter(Arrays.asList("one", "two", "", "four", ""), nonEmptyString);
-        System.out.println("Print nonEmpty list: " + nonEmptyList);
-                                                                                               
-        //Example 3
-        List<Integer> evenNumberList = filter(Arrays.asList(1, 2, 3, 4, 5), evenNumber);
-        System.out.println("Even numbers: " + evenNumberList);
-
-        //Example 4 - Using primitive specialization
-        IntPredicate oddNumber = (int i) -> i % 2 != 0;
-        System.out.println("101 odd number? " + oddNumber.test(101));
-        System.out.println("100 odd number? " + oddNumber.test(100));
+        List<Food> vegetarianFoods = predicate(foods, isVegetarian);
+        System.out.println(vegetarianFoods);
     }
 
-    public static <T> List<T> filter(List<T> list, Predicate<T> p) {
+    public static <T> List<T> predicate(List<T> list, Predicate<T> p) {
         List<T> results = new ArrayList<>();
         for (T t : list) {
             if (p.test(t)) {

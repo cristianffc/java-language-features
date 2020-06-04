@@ -1,5 +1,10 @@
 package lambda;
 
+import domain.entity.Color;
+import domain.entity.Food;
+import domain.entity.Type;
+import domain.usecase.GenerateFood;
+import java.util.List;
 import java.util.function.Supplier;
 
 /**
@@ -9,15 +14,14 @@ import java.util.function.Supplier;
 
 public class SupplierInterface {
     public static void main(String[] args) {
-        //Example 1
-        Supplier<String> text = () -> "testing supplier";
-        System.out.println(text.get());
+        List<Food> foods = GenerateFood.getFoodsList();
 
-        //Example 2
-        returnText(() -> "Hello World!");
-    }
+        Supplier<Food> appleSupplier = () -> {
+            return new Food("Apple", 50, Type.FRUIT, Color.RED, true);
+        };
 
-    public static <T> void returnText(Supplier<String> supplier) {
-        System.out.println(supplier.get());
-    }
+        Food apple = appleSupplier.get();
+        System.out.println(apple);
+        foods.add(apple);
+     }
 }

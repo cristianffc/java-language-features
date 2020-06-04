@@ -1,21 +1,28 @@
 package lambda;
 
-import entity.Car;
-import entity.Color;
+import domain.entity.Food;
+import domain.entity.Type;
+import domain.usecase.GenerateFood;
+
+import java.util.List;
 import java.util.function.Predicate;
 
 public class ComposePredicateInterface {
     public static void main(String[] args) {
-        Car car1 = new Car("Mercedes", Color.BLUE, 180, true);
+        List<Food> foods = GenerateFood.getFoodsList();
 
-        Predicate<Car> isAudiCar = car -> car.getName().equals("Audi");
+        Food food0 = foods.get(0);
 
-        Predicate<Car> isNotAudiCar = isAudiCar.negate();
+        Predicate<Food> isLemonPredicate = food -> food.getName()
+                                                       .equals("Lemon");
 
-        Predicate<Car> isNotAudiCarAndIsBlue = isNotAudiCar.and(car -> car.getColor().equals(Color.BLUE));
+        Predicate<Food> isNotLemonPredicate = isLemonPredicate.negate();
 
-        System.out.println("Is audi car? " + car1.getName() + " " + isAudiCar.test(car1));
-        System.out.println("Is not audi car? " + car1.getName() + " " + isNotAudiCar.test(car1));
-        System.out.println("Is not audi car and is blue? " + car1.getName() + " " + isNotAudiCarAndIsBlue.test(car1));
+        Predicate<Food> isNotLemonAndIsGrainPredicate = isNotLemonPredicate.and(food -> food.getType()
+                                                                                            .equals(Type.FRUIT));
+
+        System.out.println(food0.getName() + " is lemon ? " + isLemonPredicate.test(food0));
+        System.out.println(food0.getName() + " is not lemon ? " + isNotLemonPredicate.test(food0));
+        System.out.println(food0.getName() + " is not lemon and is fruit ? " + isNotLemonAndIsGrainPredicate.test(food0));
     }
 }

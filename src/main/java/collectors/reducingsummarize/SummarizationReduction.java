@@ -1,7 +1,7 @@
 package collectors.reducingsummarize;
 
-import entity.Car;
-import entity.Color;
+import domain.entity.Car;
+import domain.entity.Color;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
