@@ -20,7 +20,7 @@ public class CompareFood {
         foods.sort(new FoodCaloriesComparator());
         System.out.println("Comparator class" + foods);
 
-        //Anonymous class. It can be replaced by lambda
+        //Anonymous class. It can be replaced by Java8.lambda
         foods.sort(new Comparator<Food>() {
             @Override
             public int compare(Food first, Food second) {
