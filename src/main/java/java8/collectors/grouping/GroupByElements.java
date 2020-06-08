@@ -26,7 +26,7 @@ public class GroupByElements {
                                                                      }
                                                                  }
                                                              ));
-        System.out.println("listFoodByCaloricType ->" + listFoodByCaloricType);
+        System.out.println("listFoooodByCaloricType ->" + listFoodByCaloricType);
 
         Map<CALORIC_TYPE, List<Food>> listVegetarianFoodByCaloricType = foods.stream()
                                                            .filter(food -> food.isVegetarian()).collect(groupingBy(
