@@ -7,6 +7,7 @@ import domain.usecase.GenerateFood;
 
 import java.util.List;
 
+//Mutate the collection itself
 public class WorkingWithListsSets {
 
     public static void main(String[] args) {
